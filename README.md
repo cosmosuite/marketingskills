@@ -1,6 +1,6 @@
-# Marketing Skills for Claude Code
+# Marketing Skills for AI Agents
 
-A collection of AI agent skills focused on marketing tasks. Built for technical marketers and founders who want Claude Code (or similar AI coding assistants) to help with conversion optimization, copywriting, SEO, analytics, and growth engineering.
+A comprehensive collection of AI agent skills focused on marketing tasks. Built for technical marketers and founders who want AI agents (like Manus, Claude, Cursor, or similar AI assistants) to help with conversion optimization, copywriting, SEO, analytics, and growth engineering.
 
 Built by [Corey Haines](https://corey.co?ref=marketingskills). Need hands-on help? Check out [Conversion Factory](https://conversionfactory.co?ref=marketingskills) — Corey's agency for conversion optimization, landing pages, and growth strategy. Want to learn more about marketing? Subscribe to [Swipe Files](https://swipefiles.com?ref=marketingskills).
 
@@ -10,7 +10,7 @@ New to the terminal and coding agents? Check out the companion guide [Coding for
 
 ## What are Skills?
 
-Skills are markdown files that give AI agents specialized knowledge and workflows for specific tasks. When you add these to your project, Claude Code can recognize when you're working on a marketing task and apply the right frameworks and best practices.
+Skills are structured markdown files that give AI agents specialized knowledge and workflows for specific tasks. When you add these to your agent, it can recognize when you're working on a marketing task and apply the right frameworks and best practices automatically.
 
 ## Available Skills
 
@@ -46,33 +46,29 @@ Skills are markdown files that give AI agents specialized knowledge and workflow
 
 ## Installation
 
-### Option 1: CLI Install (Recommended)
+### Option 1: Import into Manus (Recommended)
+
+Import the entire skill collection directly into Manus using the GitHub URL:
+
+```
+https://github.com/cosmosuite/marketingskills
+```
+
+This imports all 25 marketing skills as a single meta-skill that automatically routes to the right specialized skill based on your request.
+
+### Option 2: CLI Install
 
 Use [npx skills](https://github.com/vercel-labs/skills) to install skills directly:
 
 ```bash
 # Install all skills
-npx skills add coreyhaines31/marketingskills
+npx skills add cosmosuite/marketingskills
 
 # Install specific skills
-npx skills add coreyhaines31/marketingskills --skill page-cro copywriting
+npx skills add cosmosuite/marketingskills --skill page-cro copywriting
 
 # List available skills
-npx skills add coreyhaines31/marketingskills --list
-```
-
-This automatically installs to your `.claude/skills/` directory.
-
-### Option 2: Claude Code Plugin
-
-Install via Claude Code's built-in plugin system:
-
-```bash
-# Add the marketplace
-/plugin marketplace add coreyhaines31/marketingskills
-
-# Install all marketing skills
-/plugin install marketing-skills
+npx skills add cosmosuite/marketingskills --list
 ```
 
 ### Option 3: Clone and Copy
@@ -80,8 +76,8 @@ Install via Claude Code's built-in plugin system:
 Clone the entire repo and copy the skills folder:
 
 ```bash
-git clone https://github.com/coreyhaines31/marketingskills.git
-cp -r marketingskills/skills/* .claude/skills/
+git clone https://github.com/cosmosuite/marketingskills.git
+cp -r marketingskills/skills/* ~/.skills/
 ```
 
 ### Option 4: Git Submodule
@@ -89,35 +85,33 @@ cp -r marketingskills/skills/* .claude/skills/
 Add as a submodule for easy updates:
 
 ```bash
-git submodule add https://github.com/coreyhaines31/marketingskills.git .claude/marketingskills
+git submodule add https://github.com/cosmosuite/marketingskills.git
 ```
-
-Then reference skills from `.claude/marketingskills/skills/`.
 
 ### Option 5: Fork and Customize
 
 1. Fork this repository
 2. Customize skills for your specific needs
-3. Clone your fork into your projects
+3. Import your fork into your AI agent
 
 ### Option 6: SkillKit (Multi-Agent)
 
-Use [SkillKit](https://github.com/rohitg00/skillkit) to install skills across multiple AI agents (Claude Code, Cursor, Copilot, etc.):
+Use [SkillKit](https://github.com/rohitg00/skillkit) to install skills across multiple AI agents:
 
 ```bash
 # Install all skills
-npx skillkit install coreyhaines31/marketingskills
+npx skillkit install cosmosuite/marketingskills
 
 # Install specific skills
-npx skillkit install coreyhaines31/marketingskills --skill page-cro copywriting
+npx skillkit install cosmosuite/marketingskills --skill page-cro copywriting
 
 # List available skills
-npx skillkit install coreyhaines31/marketingskills --list
+npx skillkit install cosmosuite/marketingskills --list
 ```
 
 ## Usage
 
-Once installed, just ask Claude Code to help with marketing tasks:
+Once installed, just ask your AI agent to help with marketing tasks:
 
 ```
 "Help me optimize this landing page for conversions"
@@ -131,14 +125,6 @@ Once installed, just ask Claude Code to help with marketing tasks:
 
 "Create a 5-email welcome sequence"
 → Uses email-sequence skill
-```
-
-You can also invoke skills directly:
-
-```
-/page-cro
-/email-sequence
-/seo-audit
 ```
 
 ## Skill Categories
@@ -180,6 +166,20 @@ You can also invoke skills directly:
 - `marketing-psychology` - Mental models and psychology
 - `launch-strategy` - Product launches and announcements
 - `pricing-strategy` - Pricing, packaging, and monetization
+
+## Tool Integrations
+
+This repository includes integration guides for 30+ marketing tools and platforms:
+
+- **Analytics**: GA4, Mixpanel, Amplitude, PostHog, Segment, Adobe Analytics
+- **Email**: Customer.io, Mailchimp, Kit, Resend, SendGrid
+- **Ads**: Google Ads, Meta Ads, LinkedIn Ads, TikTok Ads
+- **Referral**: Rewardful, Tolt, Mention Me
+- **SEO**: Ahrefs, SEMrush, Google Search Console
+- **E-commerce**: Shopify, Stripe
+- And many more...
+
+See `tools/REGISTRY.md` for the complete list.
 
 ## Contributing
 
