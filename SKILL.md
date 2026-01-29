@@ -1,208 +1,118 @@
-# AGENTS.md
-
-Guidelines for AI agents working in this repository.
-
-## Repository Overview
-
-This repository contains **Agent Skills** for AI agents following the [Agent Skills specification](https://agentskills.io/specification.md). It also serves as a **Claude Code plugin marketplace** via `.claude-plugin/marketplace.json`.
-
-- **Name**: Marketing Skills
-- **GitHub**: [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills)
-- **Creator**: Corey Haines
-- **License**: MIT
-
-## Repository Structure
-
-```
-marketingskills/
-├── .claude-plugin/
-│   └── marketplace.json   # Claude Code plugin marketplace manifest
-├── skills/                # Agent Skills
-│   └── skill-name/
-│       └── SKILL.md       # Required skill file
-├── CONTRIBUTING.md
-├── LICENSE
-└── README.md
-```
-
-## Build / Lint / Test Commands
-
-**Not applicable** - This is a content-only repository with no executable code.
-
-Verify manually:
-- YAML frontmatter is valid
-- `name` field matches directory name exactly
-- `name` is 1-64 chars, lowercase alphanumeric and hyphens only
-- `description` is 1-1024 characters
-
-## Agent Skills Specification
-
-Skills follow the [Agent Skills spec](https://agentskills.io/specification.md).
-
-### Required Frontmatter
-
-```yaml
 ---
-name: skill-name
-description: What this skill does and when to use it. Include trigger phrases.
+name: marketing-skills
+description: Comprehensive marketing skills collection for AI agents. Use when the user needs help with conversion rate optimization (CRO), copywriting, SEO, paid advertising, email sequences, analytics tracking, pricing strategy, product launches, referral programs, A/B testing, social content, or any marketing strategy and execution tasks.
 ---
-```
 
-### Frontmatter Field Constraints
+# Marketing Skills
 
-| Field         | Required | Constraints                                                      |
-|---------------|----------|------------------------------------------------------------------|
-| `name`        | Yes      | 1-64 chars, lowercase `a-z`, numbers, hyphens. Must match dir.   |
-| `description` | Yes      | 1-1024 chars. Describe what it does and when to use it.          |
-| `license`     | No       | License name (default: MIT)                                      |
-| `metadata`    | No       | Key-value pairs (author, version, etc.)                          |
+A comprehensive collection of 25 specialized marketing skills for AI agents. Each skill provides expert guidance, frameworks, templates, and best practices for specific marketing domains.
 
-### Name Field Rules
+## How to Use This Skill
 
-- Lowercase letters, numbers, and hyphens only
-- Cannot start or end with hyphen
-- No consecutive hyphens (`--`)
-- Must match parent directory name exactly
+This is a meta-skill that provides access to 25 specialized marketing skills. When a user requests marketing help, identify the most relevant skill(s) and read the corresponding `SKILL.md` file from the `skills/` directory.
 
-**Valid**: `page-cro`, `email-sequence`, `ab-test-setup`
-**Invalid**: `Page-CRO`, `-page`, `page--cro`
+## Available Skills by Category
 
-### Optional Skill Directories
+### Conversion Rate Optimization (CRO)
+- **page-cro** - Optimize conversion rates on marketing pages, landing pages, and product pages
+- **signup-flow-cro** - Optimize user signup and registration flows
+- **onboarding-cro** - Optimize user onboarding experiences
+- **form-cro** - Optimize form design and conversion
+- **popup-cro** - Optimize popup and modal conversion
+- **paywall-upgrade-cro** - Optimize paywall and upgrade flows
+- **ab-test-setup** - Design and implement A/B tests
 
-```
-skills/skill-name/
-├── SKILL.md        # Required - main instructions (<500 lines)
-├── references/     # Optional - detailed docs loaded on demand
-├── scripts/        # Optional - executable code
-└── assets/         # Optional - templates, data files
-```
+### Content & Copywriting
+- **copywriting** - Write persuasive marketing copy using proven frameworks
+- **copy-editing** - Edit and refine marketing copy for clarity and impact
+- **content-strategy** - Develop comprehensive content strategies
+- **social-content** - Create engaging social media content
+- **competitor-alternatives** - Create competitor alternative pages
 
-## Writing Style Guidelines
+### Email Marketing
+- **email-sequence** - Design and write email sequences for various goals
 
-### Structure
+### SEO & Content Scale
+- **seo-audit** - Conduct comprehensive SEO audits
+- **programmatic-seo** - Build programmatic SEO strategies
+- **schema-markup** - Implement schema markup for better search visibility
 
-- Keep `SKILL.md` under 500 lines (move details to `references/`)
-- Use H2 (`##`) for main sections, H3 (`###`) for subsections
-- Use bullet points and numbered lists liberally
-- Short paragraphs (2-4 sentences max)
+### Paid Advertising
+- **paid-ads** - Create and optimize paid advertising campaigns across platforms
 
-### Tone
+### Analytics & Tracking
+- **analytics-tracking** - Implement analytics tracking and event instrumentation
 
-- Direct and instructional
-- Second person ("You are a conversion rate optimization expert")
-- Professional but approachable
+### Strategy & Planning
+- **marketing-ideas** - Generate creative marketing ideas and campaigns
+- **launch-strategy** - Plan and execute product launches
+- **pricing-strategy** - Develop pricing strategies and tier structures
+- **free-tool-strategy** - Design free tool strategies for lead generation
+- **referral-program** - Design referral and affiliate programs
+- **product-marketing-context** - Establish product marketing context for campaigns
 
-### Formatting
+### Foundational Knowledge
+- **marketing-psychology** - Apply psychological principles to marketing
 
-- Bold (`**text**`) for key terms
-- Code blocks for examples and templates
-- Tables for reference data
-- No excessive emojis
+## Skill Selection Guide
 
-### Clarity Principles
+When a user asks for marketing help:
 
-- Clarity over cleverness
-- Specific over vague
-- Active voice over passive
-- One idea per section
-
-### Description Field Best Practices
-
-The `description` is critical for skill discovery. Include:
-1. What the skill does
-2. When to use it (trigger phrases)
-3. Related skills for scope boundaries
-
-```yaml
-description: When the user wants to optimize conversions on any marketing page. Use when the user says "CRO," "conversion rate optimization," "this page isn't converting." For signup flows, see signup-flow-cro.
-```
-
-## Claude Code Plugin
-
-This repo also serves as a plugin marketplace. The manifest at `.claude-plugin/marketplace.json` lists all skills for installation via:
-
-```bash
-/plugin marketplace add coreyhaines31/marketingskills
-/plugin install marketing-skills
-```
-
-See [Claude Code plugins documentation](https://code.claude.com/docs/en/plugins.md) for details.
-
-## Git Workflow
-
-### Branch Naming
-
-- New skills: `feature/skill-name`
-- Improvements: `fix/skill-name-description`
-- Documentation: `docs/description`
-
-### Commit Messages
-
-Follow the [Conventional Commits](https://www.conventionalcommits.org/) specification:
-
-- `feat: add skill-name skill`
-- `fix: improve clarity in page-cro`
-- `docs: update README`
-
-### Pull Request Checklist
-
-- [ ] `name` matches directory name exactly
-- [ ] `name` follows naming rules (lowercase, hyphens, no `--`)
-- [ ] `description` is 1-1024 chars with trigger phrases
-- [ ] `SKILL.md` is under 500 lines
-- [ ] No sensitive data or credentials
+1. **Identify the primary goal**: What is the user trying to achieve?
+2. **Match to skill category**: Use the categories above to find relevant skills
+3. **Read the specific SKILL.md**: Load `/home/ubuntu/marketingskills/skills/{skill-name}/SKILL.md`
+4. **Check references**: Many skills have additional reference files in `skills/{skill-name}/references/`
+5. **Combine skills when needed**: Complex projects may require multiple skills
 
 ## Tool Integrations
 
-This repository includes a tools registry for agent-compatible marketing tools.
+This repository includes integration guides for marketing tools and platforms. See `tools/REGISTRY.md` for available integrations including:
 
-- **Tool discovery**: Read `tools/REGISTRY.md` to see available tools and their capabilities
-- **Integration details**: See `tools/integrations/{tool}.md` for API endpoints, auth, and common operations
-- **MCP-enabled tools**: ga4, stripe, mailchimp, google-ads, resend, zapier
+- Analytics: GA4, Mixpanel, Amplitude, PostHog, Segment
+- Email: Customer.io, Mailchimp, Kit, Resend, SendGrid
+- Ads: Google Ads, Meta Ads, LinkedIn Ads, TikTok Ads
+- Referral: Rewardful, Tolt, Mention Me
+- SEO: Ahrefs, SEMrush, Google Search Console
+- E-commerce: Shopify, Stripe
+- And many more...
 
-### Registry Structure
+## Examples
+
+**User asks: "Help me improve conversions on my pricing page"**
+→ Read `skills/page-cro/SKILL.md`
+
+**User asks: "Write a welcome email sequence for new users"**
+→ Read `skills/email-sequence/SKILL.md`
+
+**User asks: "Set up analytics tracking for my app"**
+→ Read `skills/analytics-tracking/SKILL.md`
+
+**User asks: "Create a referral program"**
+→ Read `skills/referral-program/SKILL.md`
+
+**User asks: "Optimize my signup flow"**
+→ Read `skills/signup-flow-cro/SKILL.md`
+
+## Skill Structure
+
+Each skill follows this structure:
 
 ```
-tools/
-├── REGISTRY.md              # Index of all tools with capabilities
-└── integrations/            # Detailed integration guides
-    ├── ga4.md
-    ├── stripe.md
-    ├── rewardful.md
-    └── ...
+skills/{skill-name}/
+├── SKILL.md              # Main skill instructions
+└── references/           # Optional detailed reference materials
+    ├── frameworks.md
+    ├── templates.md
+    └── examples.md
 ```
 
-### When to Use Tools
+## Best Practices
 
-Skills reference relevant tools for implementation. For example:
-- `referral-program` skill → rewardful, tolt, dub-co, mention-me guides
-- `analytics-tracking` skill → ga4, mixpanel, segment guides
-- `email-sequence` skill → customer-io, mailchimp, resend guides
-- `paid-ads` skill → google-ads, meta-ads, linkedin-ads guides
+- **Read skills on demand**: Don't load all skills at once. Read only what's needed for the current task.
+- **Check references**: Many skills have detailed reference files with frameworks, templates, and examples.
+- **Combine skills**: Complex marketing projects often require multiple skills working together.
+- **Use tool integrations**: Reference `tools/integrations/{tool}.md` for implementation details.
 
-## Checking for Updates
+## License
 
-When using any skill from this repository:
-
-1. **Once per session**, on first skill use, check for updates:
-   - Fetch `VERSIONS.md` from GitHub: https://raw.githubusercontent.com/coreyhaines31/marketingskills/main/VERSIONS.md
-   - Compare versions against local skill files
-
-2. **Only prompt if meaningful**:
-   - 2 or more skills have updates, OR
-   - Any skill has a major version bump (e.g., 1.x to 2.x)
-
-3. **Non-blocking notification** at end of response:
-   ```
-   ---
-   Skills update available: X marketing skills have updates.
-   Say "update skills" to update automatically, or run `git pull` in your marketingskills folder.
-   ```
-
-4. **If user says "update skills"**:
-   - Run `git pull` in the marketingskills directory
-   - Confirm what was updated
-
-## Skill Categories
-
-See `README.md` for the current list of skills organized by category. When adding new skills, follow the naming patterns of existing skills in that category.
+MIT License - See LICENSE file for details.
